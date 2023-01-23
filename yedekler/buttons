@@ -1,0 +1,93 @@
+const Discord = require('discord.js');
+const { MessageEmbed } = require('discord.js');
+const { MessageButton } = require('discord-buttons');
+const moment = require("moment");
+const db = require('quick.db');
+
+module.exports = button => {
+
+const asuid = db.get(`asuid_${MessageButton.id}`)
+const metroid = db.get(`metroid_${MessageButton.id}`)
+const ctdid = db.get(`ctdid_${MessageButton.id}`)
+const gndid = db.get(`gndid_${MessageButton.id}`)
+
+  if(button.id === `${asuid}`) {    
+    button.defer();
+    const kabuleden = button.clicker.member
+    const tarih = moment().add(3, 'hour').format('DD/MM/YYYY HH:mm:ss')
+    const içerik = db.get(`içerik_${asuid}`)
+const memur = db.get(`asumemur_${asuid}`)
+const rol = db.get(`asurol_${asuid}`)
+    var asu = new MessageEmbed()
+    .setTitle('UYARI — (CTSOB: Air Support Division ) & ÇAĞRI SONUÇLANDIRILDI')
+    .setThumbnail('https://media.discordapp.net/attachments/846665518755872788/855536368196517898/process.png')
+    .setColor('17397C')
+    .addField(`**MEMUR**`, `<@${memur}>`)
+    .addField(`**DİVİZYON**`, `<@&${rol}>`)
+    .addField(`**İSTEK**`, `${içerik}`)
+    .addField(`**DURUM**`, `${kabuleden} tarafından ${tarih} tarihinde sonuçlandırıldı.`)
+    return button.message.edit({
+  embed: asu    
+})
+  }
+    
+      if(button.id === `${metroid}`) {    
+    button.defer();
+    const kabuleden = button.clicker.member
+    const tarih = moment().add(3, 'hour').format('DD/MM/YYYY HH:mm:ss')
+    const içerik = db.get(`içerik_${metroid}`)
+    const memur = db.get(`metromemur_${metroid}`)
+const rol = db.get(`metrorol_${metroid}`)
+    var metro = new MessageEmbed()
+    .setTitle('UYARI — (CTSOB: Metropolitan Division) & ÇAĞRI SONUÇLANDIRILDI')
+    .setThumbnail('https://media.discordapp.net/attachments/846665518755872788/855798504043053056/metrologo.png')
+    .setColor('17397C')
+    .addField(`**MEMUR**`, `<@${memur}>`)
+    .addField(`**DİVİZYON**`, `<@&${rol}>`)
+    .addField(`**İSTEK**`, `${içerik}`)
+    .addField(`**DURUM**`, `${kabuleden} tarafından ${tarih} tarihinde sonuçlandırıldı.`)
+    return button.message.edit({
+  embed: metro
+})
+    }
+    
+      if(button.id === `${ctdid}`) {    
+    button.defer();
+    const kabuleden = button.clicker.member
+    const tarih = moment().add(3, 'hour').format('DD/MM/YYYY HH:mm:ss')
+    const içerik = db.get(`içerik_${ctdid}`)
+        const memur = db.get(`ctdmemur_${ctdid}`)
+const rol = db.get(`ctdrol_${ctdid}`)
+    var ctd = new MessageEmbed()
+    .setTitle('UYARI — (TSB & OCB: Central Traffic Division) & ÇAĞRI SONUÇLANDIRILDI')
+    .setColor('17397C')
+    .setThumbnail('https://media.discordapp.net/attachments/846665518755872788/855798886605389834/GH1yvEx.png')
+    .addField(`**MEMUR**`, `<@${memur}>`)
+    .addField(`**DİVİZYON**`, `<@&${rol}>`)
+    .addField(`**İSTEK**`, `${içerik}`)
+    .addField(`**DURUM**`, `${kabuleden} tarafından ${tarih} tarihinde sonuçlandırıldı.`)
+    return button.message.edit({
+  embed: ctd
+})
+    }
+  if(button.id === `${gndid}`) {    
+    button.defer();
+    const kabuleden = button.clicker.member
+    const tarih = moment().add(3, 'hour').format('DD/MM/YYYY HH:mm:ss')
+    const içerik = db.get(`içerik_${gndid}`)
+    const memur = db.get(`gndmemur_${gndid}`)
+const rol = db.get(`gndrol_${gndid}`)
+    var gnd = new MessageEmbed()
+    .setTitle('UYARI — (DB: Gang and Narcotics Division) & ÇAĞRI SONUÇLANDIRILDI')
+    .setThumbnail('https://media.discordapp.net/attachments/855535073570455563/855814665938272266/w2bNg6j.png')
+    .setColor('17397C')
+    .addField(`**MEMUR**`, `<@${memur}>`)
+    .addField(`**DİVİZYON**`, `<@&${rol}>`)
+    .addField(`**İSTEK**`, `${içerik}`)
+    .addField(`**DURUM**`, `${kabuleden} tarafından ${tarih} tarihinde sonuçlandırıldı.`)
+    return button.message.edit({
+  embed: gnd    
+})
+  }
+
+ }

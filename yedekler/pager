@@ -1,0 +1,146 @@
+//AUTHOR, AKSOY#8645
+const Discord = require('discord.js');
+const { MessageEmbed } = require("discord.js");
+const client = new Discord.Client();
+const { MessageButton } = require('discord-buttons')
+const db = require('quick.db');
+const generator = require('generate-password');
+
+exports.run = async (client, message, args) => {
+if(!args[0]) return message.delete();
+  const divizyon = message.mentions.roles.first()
+if(!divizyon) return message.delete();
+  if(!args.slice(1).join(' ')) return message.delete();
+  const durum = args.slice(1).join(' ')
+  message.delete();
+//asu 
+  if(divizyon.name === 'CTSOB: Air Support Division') {
+const asu = new MessageEmbed()
+.setColor('17397C')
+.setTitle(`UYARI — (${divizyon.name})`)
+.setTimestamp()
+.addField(`**MEMUR**`, `${message.author.tag}`)
+.addField(`**DİVİZYON**`, `${divizyon}`)
+.addField(`**İSTEK**`, `${durum}`)
+.setThumbnail('https://media.discordapp.net/attachments/846665518755872788/855536368196517898/process.png')
+var asuid = generator.generate({
+        length: 3,
+        numbers: false,
+    })
+let asuyes = new MessageButton()
+.setStyle('green')
+.setLabel('ÇAĞRIYI BİTİR')
+.setID(asuid)
+
+db.set(`asumemur_${asuid}`, `${message.author.id}`)
+db.set(`asurol_${asuid}`, divizyon.id)
+db.set(`asuid_${asuyes.id}`, asuid)
+db.set(`içerik_${asuid}`, `${durum}`)
+ client.channels.cache.get('855846356186300427').send({
+  embed: asu,
+  buttons: asuyes
+})
+  }
+//metro
+  if(divizyon.name === 'CTSOB: Metropolitan Division') {
+const metro = new MessageEmbed()
+.setColor('17397C')
+.setTitle(`UYARI — (${divizyon.name})`)
+.setTimestamp()
+.addField(`**MEMUR**`, `${message.author.tag}`)
+.addField(`**DİVİZYON**`, `${divizyon}`)
+.addField(`**İSTEK**`, `${durum}`)
+.setThumbnail('https://media.discordapp.net/attachments/846665518755872788/855798504043053056/metrologo.png')
+var metroid = generator.generate({
+        length: 3,
+        numbers: false,
+    })
+let metroyes = new MessageButton()
+.setStyle('green')
+.setLabel('ÇAĞRIYI BİTİR')
+.setID(metroid)
+
+db.set(`metromemur_${metroid}`, `${message.author.id}`)
+db.set(`metrorol_${metroid}`, divizyon.id)
+db.set(`metroid_${metroyes.id}`, metroid)
+db.set(`içerik_${metroid}`, `${durum}`)
+ client.channels.cache.get('855846356186300427').send({
+  embed: metro,
+  buttons: metroyes
+})
+  }
+//ctd
+  if(divizyon.name === 'TSB & OCB: Central Traffic Division') {
+  const ctd = new MessageEmbed()
+.setColor('17397C')
+.setTitle(`UYARI — (${divizyon.name})`)
+.setTimestamp()
+.addField(`**MEMUR**`, `${message.author.tag}`)
+.addField(`**DİVİZYON**`, `${divizyon}`)
+.addField(`**İSTEK**`, `${durum}`)
+.setThumbnail('https://media.discordapp.net/attachments/846665518755872788/855798886605389834/GH1yvEx.png')
+  
+  var ctdid = generator.generate({
+        length: 3,
+        numbers: false,
+    })
+  
+let ctdyes = new MessageButton()
+.setStyle('green')
+.setLabel('ÇAĞRIYI BİTİR')
+.setID(ctdid)
+
+db.set(`ctdmemur_${ctdid}`, `${message.author.id}`)
+db.set(`ctdrol_${ctdid}`, divizyon.id)
+db.set(`ctdid_${ctdyes.id}`, ctdid)
+db.set(`içerik_${ctdid}`, `${durum}`)
+client.channels.cache.get('855846356186300427').send({
+  embed: ctd,
+  buttons: ctdyes
+})
+  }
+//gnd
+  if(divizyon.name === 'DB: Gang and Narcotics Division') {
+  const gnd = new MessageEmbed()
+.setColor('17397C')
+.setTitle(`UYARI — (${divizyon.name})`)
+.setTimestamp()
+.addField(`**MEMUR**`, `${message.author.tag}`)
+.addField(`**DİVİZYON**`, `${divizyon}`)
+.addField(`**İSTEK**`, `${durum}`)
+.setThumbnail('https://media.discordapp.net/attachments/855535073570455563/855814665938272266/w2bNg6j.png')
+  
+  var gndid = generator.generate({
+        length: 3,
+        numbers: false,
+    })
+  
+let gndyes = new MessageButton()
+.setStyle('green')
+.setLabel('ÇAĞRIYI BİTİR')
+.setID(gndid)
+
+db.set(`gndmemur_${gndid}`, `${message.author.id}`)
+db.set(`gndrol_${gndid}`, divizyon.id)
+db.set(`gndid_${gndyes.id}`, gndid)
+db.set(`içerik_${gndid}`, `${durum}`)
+client.channels.cache.get('855846356186300427').send({
+  embed: gnd,
+  buttons: gndyes
+})
+  }
+  
+};
+exports.conf = {
+  enabled: true,
+  guildOnly: false,
+  aliases: [],
+  permLevel: 0
+};
+
+exports.help = {
+  name: 'pager',
+  description: 'pager',
+  usage: "pager"
+};
+//AUTHOR, AKSOY#8645
