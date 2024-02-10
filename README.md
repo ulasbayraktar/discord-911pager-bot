@@ -12,7 +12,7 @@ It was coded for Los Santos Stories Roleplay in the year 2020. Coded by me, with
 ![unknown](https://github.com/ulasbayraktar/pager-bot/assets/73671806/df0536ae-db42-4cea-9e5e-82deab6bbf26)
 
 
-## Reference (LS-RP)
+## Reference
 
 The Discord bot was coded with reference to LS-RP during the development.
 ![image](https://github.com/ulasbayraktar/pager-bot/assets/73671806/7130ba75-89f7-4910-b9c1-f7a9a8fd4b88)
